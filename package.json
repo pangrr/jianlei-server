@@ -2,6 +2,10 @@
   "name": "realestate-backend",
   "version": "1.0.0",
   "description": "works with realestate-frontend",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pangrr/realestate-backend.git"
+  },
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
@@ -17,6 +21,6 @@
     "mongoose": "^5.0.16"
   },
   "devDependencies": {
-    "nodemon": "^1.17.3"
+    "nodemon": "^1.17.5"
   }
 }
