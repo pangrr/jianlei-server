@@ -35,10 +35,10 @@ exports.updateRealestate = async (req, res) => {
 exports.deleteRealestate = async (req, res) => {
   const id = req.params.id;
   try {
-    const realestateDeleted = await service.deleteRealestate(id)
+    const realestateDeleted = await service.deleteRealestate(id);
     return res.status(204).json(realestateDeleted);
   } catch (e) {
-      return res.status(400).json({message: e.message});
+    return res.status(400).json({message: e.message});
   }
 }
 
