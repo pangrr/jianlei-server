@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const RealestateController = require('../../controllers/realestate.controller');
+const controller = require('../../controllers/realestate.controller');
 
-router.get('/:id', RealestateController.getRealestate);
-router.post('/', RealestateController.createRealestate);
-router.put('/', RealestateController.updateRealestate);
-router.delete('/:id',RealestateController.deleteRealestate);
+router.get('/:id', controller.getRealestate);
+router.post('/', controller.createRealestate);
+router.put('/', controller.updateRealestate);
+router.delete('/:id',controller.deleteRealestate);
+router.post('/images', controller.uploadImages);
 
 module.exports = router;

@@ -1,9 +1,9 @@
-const RealestateService = require('../services/realestate.service');
+const service = require('../services/realestate.service');
 
 
 exports.getRealestate = async (req, res) => {
   try {
-    let realestateFound = await RealestateService.getRealestate(req.params.id);
+    const realestateFound = await service.getRealestate(req.params.id);
     return res.status(200).json(realestateFound);
   } catch (e) {    
     return res.status(400).json({message: e.message});
@@ -11,9 +11,9 @@ exports.getRealestate = async (req, res) => {
 }
 
 exports.createRealestate = async (req, res) => {
-  let realestate = req.body;
+  const realestate = req.body;
   try {
-    let realestateSaved = await RealestateService.createRealestate(realestate);
+    const realestateSaved = await service.createRealestate(realestate);
     return res.status(201).json(realestateSaved);
   } catch(e) {      
     return res.status(400).json({message: e.message});
@@ -25,7 +25,7 @@ exports.updateRealestate = async (req, res) => {
     return res.status(400).json({message: '_id is required'});
   }
   try {
-    let realestateUpdated = await RealestateService.updateRealestate(req.body);
+    const realestateUpdated = await service.updateRealestate(req.body);
     return res.status(200).json(realestateUpdated);
   } catch (e) {
     return res.status(400).json({message: e.message});
@@ -33,11 +33,20 @@ exports.updateRealestate = async (req, res) => {
 }
 
 exports.deleteRealestate = async (req, res) => {
-    let id = req.params.id;
-    try {
-      let realestateDeleted = await RealestateService.deleteRealestate(id)
-      return res.status(204).json(realestateDeleted);
-    } catch (e) {
-        return res.status(400).json({message: e.message});
-    }
+  const id = req.params.id;
+  try {
+    const realestateDeleted = await service.deleteRealestate(id)
+    return res.status(204).json(realestateDeleted);
+  } catch (e) {
+      return res.status(400).json({message: e.message});
+  }
+}
+
+exports.uploadImage = async (req, res) => {
+  try {
+    const imagesUploaded = await service.uploadImages(req);
+    return res.status(200).json(imagesUploaded);
+  } catch (e) {
+    return res.status(400).json({message: e.message});
+  }
 }

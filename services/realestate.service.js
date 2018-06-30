@@ -1,5 +1,5 @@
 const Realestate = require('../models/realestate.model');
-
+const IncomingForm = require('formidable').IncomingForm;
 
 exports.getRealestate = async (id) => {  
   try {
@@ -18,7 +18,7 @@ exports.createRealestate = async (realestate) => {
   try {
     let realestateCreated = await newRealestate.save();
     return realestateCreated;
-  } catch(e) {      
+  } catch (e) {      
     throw Error(e);
   }
 };
@@ -30,7 +30,7 @@ exports.updateRealestate = async (realestate) => {
       throw Error(`cannot find realestate id=${realestate._id}`);
     }
     return realestateUpdated;
-  } catch(e) {
+  } catch (e) {
     throw Error(e);
   }
 };
@@ -42,7 +42,23 @@ exports.deleteRealestate = async (id) => {
       throw Error(`cannot find realestate id=${id}`);
     }
     return realestateDeleted;
-  } catch(e) {
+  } catch (e) {
     throw Error(e);
   }
 };
+
+exports.uploadImages = async (req, res) => {
+  try {
+    const form = new IncomingForm();
+    form.on('file', (field, file) => {
+      // todo: save file
+      console.log(file.path);
+    });
+    form.on('end', () => {
+      res.json();
+    });
+    form.parse(req);
+  } catch (e) {
+    throw Error(e);
+  }
+}
