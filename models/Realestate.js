@@ -14,5 +14,4 @@ const RealestateSchema = new mongoose.Schema({
   propertyManagementCompany: String
 });
 
-const Realestate = mongoose.model('Realestate', RealestateSchema);
-module.exports = Realestate;
+module.exports = mongoose.model('Realestate', RealestateSchema);
