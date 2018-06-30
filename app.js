@@ -1,23 +1,18 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200
-};
+const corsOptions = { origin: '*', optionsSuccessStatus: 200 };
 const bodyParser = require('body-parser');
-const bluebird = require('bluebird');
 const mongoose = require('mongoose');
-
-const api = require('./routes/api.route');
-const mongodbUrl = 'mongodb+srv://ran:5001@ran-sh2it.mongodb.net/test';
+const realestate = require('./routes/realestate');
 
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
-app.use('/api', api);
+app.use('/realestate', realestate);
 
-mongoose.Promise = bluebird;
-mongoose.connect(mongodbUrl)
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb+srv://ran:5001@ran-sh2it.mongodb.net/test')
 .then(()=> { 
   console.log('mongodb is connected');
   app.listen(3000, () => {
