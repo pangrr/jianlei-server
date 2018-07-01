@@ -1,4 +1,5 @@
 const express = require('express');
+const formidable = require('formidable');
 const router = express.Router();
 const Realestate = require('../models/Realestate.js');
 
@@ -41,6 +42,23 @@ router.delete('/:id', (req, res, next) => {
     if (err) return next(err);
     res.json(post);
   });
+});
+
+// upload images
+router.post('/images', (req, res, next) => {
+  const form = new formidable.IncomingForm();
+
+  form.parse(req);
+
+  form.on('fileBegin', (name, file) => {
+    file.path = `${__dirname}/../images/${file.name}`;
+  });
+
+  form.on('file', (name, file) => {
+    console.log(`uploaded ${file.name}`);
+  });
+
+  res.write('files uploaded');
 });
 
 module.exports = router;

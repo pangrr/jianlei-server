@@ -1,10 +1,11 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const corsOptions = { origin: '*', optionsSuccessStatus: 200 };
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const realestate = require('./routes/realestate');
+
+const app = express();
 
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
