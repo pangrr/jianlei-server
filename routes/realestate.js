@@ -48,17 +48,24 @@ router.delete('/:id', (req, res, next) => {
 router.post('/images', (req, res, next) => {
   const form = new formidable.IncomingForm();
 
+  const filenamesSaved = [];
+  let filenameSeed = Date.now();
+
   form.parse(req);
 
   form.on('fileBegin', (name, file) => {
-    file.path = `${__dirname}/../images/${file.name}`;
+    const filenameToSave = `${filenameSeed++}.${getFilenameExtension(file.name)}`;
+    filenamesSaved.push(filenameToSave);
+    file.path = `${__dirname}/../images/${filenameToSave}`;
   });
 
-  form.on('file', (name, file) => {
-    console.log(`uploaded ${file.name}`);
+  form.on('end', (name, file) => {
+    res.json(filenamesSaved);
   });
-
-  res.write('files uploaded');
 });
 
 module.exports = router;
+
+function getFilenameExtension(filename) {
+  return filename.split('.').pop();
+}
