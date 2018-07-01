@@ -2,16 +2,10 @@ const mongoose = require('mongoose');
 
 const RealestateSchema = new mongoose.Schema({
   name: String,
-  alias: String,
-  location: String,
+  address: String,
   price: Number,
-  customerComments: [{ customer: String, comment: String }],
   description: String,
-  imageUrls: [String],
-  relatedRealestates: [Number],
-  developer: String,
-  investor: String,
-  propertyManagementCompany: String
+  imageUrls: [String]
 });
 
 module.exports = mongoose.model('Realestate', RealestateSchema);
