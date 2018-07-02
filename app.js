@@ -13,7 +13,7 @@ app.use('/realestate', realestate);
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb+srv://ran:5001@ran-sh2it.mongodb.net/test')
+mongoose.connect('mongodb://localhost:27017/local')
 .then(()=> { 
   console.log('mongodb is connected');
   app.listen(3000, () => {

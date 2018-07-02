@@ -1,8 +1,8 @@
 const express = require('express');
-const formidable = require('formidable');
+const formidable = require('formidable');;
+const path = require('path');
 const router = express.Router();
 const Realestate = require('../models/Realestate.js');
-
 
 // get all realestates
 router.get('/', (req, res, next) => {
@@ -56,12 +56,17 @@ router.post('/images', (req, res, next) => {
   form.on('fileBegin', (name, file) => {
     const filenameToSave = `${filenameSeed++}.${getFilenameExtension(file.name)}`;
     filenamesSaved.push(filenameToSave);
-    file.path = `${__dirname}/../images/${filenameToSave}`;
+    file.path = path.join(__dirname, '..', 'images', filenameToSave);
   });
 
   form.on('end', (name, file) => {
     res.json(filenamesSaved);
   });
+});
+
+// get an image by file name
+router.get('/image/:filename', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '..', 'images', req.params.filename))
 });
 
 module.exports = router;

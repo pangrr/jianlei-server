@@ -5,7 +5,7 @@ const RealestateSchema = new mongoose.Schema({
   address: String,
   price: Number,
   description: String,
-  imageUrls: [String]
+  images: [String]
 });
 
 module.exports = mongoose.model('Realestate', RealestateSchema);
