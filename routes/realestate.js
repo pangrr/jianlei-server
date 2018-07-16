@@ -22,6 +22,7 @@ router.get('/:id', (req, res, next) => {
 
 // create a realestate
 router.post('/', (req, res, next) => {
+  delete req.body._id;
   Realestate.create(req.body, (err, post) => {
     if (err) return next(err);
     res.json(post);
