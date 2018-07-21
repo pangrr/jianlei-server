@@ -10,8 +10,8 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
-app.use('/api/realestate', realestate);
-app.use('/api/customer', customer);
+app.use('/realestate', realestate);
+app.use('/customer', customer);
 
 mongoose.Promise = global.Promise;
 
