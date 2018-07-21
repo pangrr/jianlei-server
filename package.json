@@ -1,5 +1,5 @@
 {
-  "name": "realestate-backend",
+  "name": "realestate-server",
   "version": "1.0.0",
   "description": "works with realestate-frontend",
   "repository": {
@@ -9,6 +9,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ran Pang",
