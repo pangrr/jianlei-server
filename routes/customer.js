@@ -18,4 +18,12 @@ router.post('/', (req, res, next) => {
   });
 });
 
+// delete a customer by id
+router.delete('/:id', (req, res, next) => {
+  Customer.findByIdAndRemove(req.params.id, req.body, (err, post) => {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
 module.exports = router;
