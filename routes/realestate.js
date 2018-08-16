@@ -45,6 +45,11 @@ router.delete('/:id', (req, res, next) => {
   });
 });
 
+// delete an image by image name
+router.delete('/image/:name', (req, res, next) => {
+  // TODO
+});
+
 // upload images
 router.post('/images', (req, res, next) => {
   const form = new formidable.IncomingForm();

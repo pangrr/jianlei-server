@@ -7,7 +7,7 @@ const RealestateSchema = new mongoose.Schema({
   redpocket: { amount: Number, startDate: String, endDate: String },
   groupPrice: Number,
   phone: Number,
-  consultant: { title: String, phone: Number, description: String },
+  consultant: { phone: Number, description: String },
   description: String,
   images: [String],
   visitServices: { taxi: String, reimburse: String },
