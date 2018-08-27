@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const RealestateSchema = new mongoose.Schema({
   name: String,
   address: String,
+  coordinate: { longitude: Number, latitude: Number },
   price: Number,
   redpocket: { amount: Number, startDate: String, endDate: String },
   groupPrice: Number,
