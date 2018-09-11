@@ -14,7 +14,8 @@ const RealestateSchema = new mongoose.Schema({
   images: [String],
   visitServices: { taxi: String, reimburse: String },
   comments: [{ account: String, text: String, date: String }],
-  relatedRealestateIds: [String]
+  relatedRealestateIds: [String],
+  news: [{ title: String, url: String }]
 });
 
 
