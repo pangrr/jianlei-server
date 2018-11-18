@@ -4,14 +4,14 @@ const corsOptions = { origin: '*', optionsSuccessStatus: 200 };
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const realestate = require('./routes/realestate');
-const customer = require('./routes/customer.js');
+const customerRequest = require('./routes/customerRequest.js');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 app.use('/api/realestate', realestate);
-app.use('/api/customer', customer);
+app.use('/api/customerRequest', customerRequest);
 
 mongoose.Promise = global.Promise;
 

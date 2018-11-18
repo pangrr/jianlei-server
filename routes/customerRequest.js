@@ -1,26 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const Customer = require('../models/Customer.js');
+const CustomerRequest = require('../models/CustomerRequest.js');
 
-// get all customers
+// get all customer requests
 router.get('/', (req, res, next) => {
-  Customer.find((err, customers) => {
+  CustomerRequest.find((err, customerRequests) => {
     if (err) return next(err);
-    res.json(customers);
+    res.json(customerRequests);
   });
 });
 
-// create a customer
+// create a customer request
 router.post('/', (req, res, next) => {
-  Customer.create(req.body, (err, post) => {
+  CustomerRequest.create(req.body, (err, post) => {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-// delete a customer by id
+// delete a customer request by id
 router.delete('/:id', (req, res, next) => {
-  Customer.findByIdAndRemove(req.params.id, req.body, (err, post) => {
+  CustomerRequest.findByIdAndRemove(req.params.id, req.body, (err, post) => {
     if (err) return next(err);
     res.json(post);
   });
