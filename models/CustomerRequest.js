@@ -6,7 +6,8 @@ const CustomerRequestSchema = new mongoose.Schema({
   request: String,
   realestateId: String,
   realestateName: String,
-  requestTime: String
+  requestTime: String,
+  note: String
 });
 
 

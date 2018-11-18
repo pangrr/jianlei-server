@@ -18,6 +18,15 @@ router.post('/', (req, res, next) => {
   });
 });
 
+// update a customer request by id
+router.put('/:id', (req, res, next) => {
+  CustomerRequest.findByIdAndUpdate(req.params.id, req.body, (err, post) => {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+
 // delete a customer request by id
 router.delete('/:id', (req, res, next) => {
   CustomerRequest.findByIdAndRemove(req.params.id, req.body, (err, post) => {
