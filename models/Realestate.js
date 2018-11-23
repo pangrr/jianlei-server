@@ -10,7 +10,7 @@ const RealestateSchema = new mongoose.Schema({
   groupPrice: Number,
   phone: Number,
   consultant: { phone: Number, description: String },
-  description: String,
+  descriptionImage: String,
   images: [String],
   visitServices: { taxi: String, reimburse: String },
   comments: [{ account: String, text: String, date: String }],
